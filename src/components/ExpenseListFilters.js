@@ -20,6 +20,7 @@ class ExpenseListFilters extends React.Component {
       <div>
         <input
           type="text"
+          id="filter-text"
           value={this.props.filters.text}
           onChange={(e) => {
             this.props.dispatch(setTextFilter(e.target.value));
@@ -29,8 +30,10 @@ class ExpenseListFilters extends React.Component {
           value={this.props.filters.sortBy}
           onChange={(e) => {
             if (e.target.value === 'date') {
+              document.getElementById("filter-text").style.display = "none";
               this.props.dispatch(sortByDate());
             } else if (e.target.value === 'amount') {
+              document.getElementById("dselector").style.display = "none";
               this.props.dispatch(sortByAmount());
             }
           }}
@@ -38,16 +41,18 @@ class ExpenseListFilters extends React.Component {
           <option value="date">Date</option>
           <option value="amount">Amount</option>
         </select>
-        <DateRangePicker 
-          startDate={this.props.filters.startDate}
-          endDate={this.props.filters.endDate}
-          onDatesChange={this.onDatesChange}
-          focusedInput={this.state.calendarFocused}
-          onFocusChange={this.onFocusChange}
-          showClearDates={true}
-          numberOfMonths={1}
-          isOutsideRange={() => false}
-        />
+        <div id="dselector">
+          <DateRangePicker 
+            startDate={this.props.filters.startDate}
+            endDate={this.props.filters.endDate}
+            onDatesChange={this.onDatesChange}
+            focusedInput={this.state.calendarFocused}
+            onFocusChange={this.onFocusChange}
+            showClearDates={true}
+            numberOfMonths={1}
+            isOutsideRange={() => false}
+          />
+        </div>
       </div>
 
     );
