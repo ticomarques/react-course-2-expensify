@@ -8,9 +8,10 @@ export default (state = expensesReducerDefaultState, action) => {
       return [
         ...state,
         action.expense
-      ];
+      ];//usamos array destructuring para adicionar novo item ao array de expenses QUE ESTA NO STATE
     case 'REMOVE_EXPENSE':
       return state.filter(({ id }) => id !== action.id);
+      //Usamos o filter para criar um novo array com todos os itens com ID diferentes do passado
     case 'EDIT_EXPENSE':
       return state.map((expense) => {
         if (expense.id === action.id) {
@@ -21,6 +22,8 @@ export default (state = expensesReducerDefaultState, action) => {
         } else {
           return expense;
         };
+        //Usamos o map para varrer o array e achar o indice com id igual ao action id, 
+        //e depois atualiza-lo com action.updates
       });
     default:
       return state;

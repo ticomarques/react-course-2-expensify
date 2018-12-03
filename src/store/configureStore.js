@@ -1,6 +1,10 @@
+/*
+Aqui fica a criacao do store e combinacao (junta) os 2 reducers (expenses and filter)
+*/
+
 import { createStore, combineReducers } from 'redux';
-import expensesReducer from '../reducers/expenses';
-import filtersReducer from '../reducers/filters';
+import expensesReducer from '../reducers/expenses'; //Reducer expenses
+import filtersReducer from '../reducers/filters'; //Reducer filters
 
 export default () => {
   const store = createStore(
