@@ -25,6 +25,8 @@ export default (state = expensesReducerDefaultState, action) => {
         //Usamos o map para varrer o array e achar o indice com id igual ao action id, 
         //e depois atualiza-lo com action.updates
       });
+    case 'SET_EXPENSES':
+      return action.expenses;
     default:
       return state;
   }
